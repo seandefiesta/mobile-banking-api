@@ -1,0 +1,61 @@
+### Works with the VS Code "REST Client" extension. Run `npm run seed` first.
+@base = http://localhost:3000
+
+### Health
+GET {{base}}/health
+
+### Register
+POST {{base}}/api/auth/register
+Content-Type: application/json
+
+{ "name": "Carla Lim", "email": "carla@example.com", "password": "Password123" }
+
+### Login (copy the accessToken into @token below)
+POST {{base}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "alice@example.com", "password": "Password123" }
+
+###
+@token = PASTE_TOKEN_HERE
+
+### Who am I
+GET {{base}}/api/me
+Authorization: Bearer {{token}}
+
+### List my accounts
+GET {{base}}/api/accounts
+Authorization: Bearer {{token}}
+
+### Open a savings account
+POST {{base}}/api/accounts
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "type": "savings" }
+
+### Deposit
+POST {{base}}/api/accounts/1/deposits
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "amount": 250.75, "description": "Salary" }
+
+### Withdraw
+POST {{base}}/api/accounts/1/withdrawals
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "amount": 40, "description": "ATM" }
+
+### Transfer (replace toAccountNumber with Bob's number printed by the seed script)
+POST {{base}}/api/transfers
+Authorization: Bearer {{token}}
+Idempotency-Key: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+Content-Type: application/json
+
+{ "fromAccountId": 1, "toAccountNumber": "0000000000", "amount": 100, "description": "Rent share" }
+
+### Transaction history
+GET {{base}}/api/accounts/1/transactions?limit=10&offset=0
+Authorization: Bearer {{token}}
