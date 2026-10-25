@@ -15,6 +15,9 @@ A REST API for a mobile banking app, built with **Node.js and zero runtime depen
 - Interactive Swagger UI docs at `/docs`
 - 15 integration tests using Node's built-in test runner
 
+![Swagger UI](docs/accounts-list.png)
+![Passing tests](docs/npm-tests.png)
+
 ## Quick start
 
 Requires **Node.js 22.13+**.
