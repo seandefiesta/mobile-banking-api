@@ -20,7 +20,7 @@ A REST API for a mobile banking app, built with **Node.js and zero runtime depen
 Requires **Node.js 22.13+**.
 
 ```bash
-git clone <your-repo-url>
+git clone <[your-repo-url](https://github.com/seandefiesta/mobile-banking-api)>
 cd mobile-banking-api
 cp .env.example .env      # then set JWT_SECRET (see the comment inside)
 npm run seed              # optional: demo users alice@example.com / bob@example.com (Password123)
